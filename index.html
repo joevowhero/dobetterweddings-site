@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Do Better Weddings | By Dudes for Grooms</title>
+<title>Do Better Weddings</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -13,7 +13,6 @@
     --off-white: #F2F2F0;
     --gray: #888;
     --light-gray: #E8E8E6;
-    --accent: #0A0A0A;
   }
 
   body {
@@ -23,6 +22,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  /* NAV */
   .nav {
     background: var(--black);
     padding: 14px 24px;
@@ -49,6 +49,7 @@
   }
   .nav-ig:hover { color: var(--white); }
 
+  /* HERO */
   .hero {
     background: var(--black);
     color: var(--white);
@@ -78,10 +79,18 @@
     font-size: 16px;
     color: #999;
     max-width: 480px;
-    margin: 0 auto 48px;
+    margin: 0 auto 16px;
     line-height: 1.6;
   }
+  .hero-direction {
+    font-size: 12px;
+    color: #555;
+    margin-bottom: 32px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
 
+  /* AUDIENCE SPLIT */
   .split {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -92,11 +101,11 @@
   @media (max-width: 560px) { .split { grid-template-columns: 1fr; } }
   .split-btn {
     display: block;
-    padding: 20px 24px;
+    padding: 24px 24px;
     text-align: center;
     text-decoration: none;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
     letter-spacing: 0.01em;
     transition: all 0.15s ease;
     cursor: pointer;
@@ -104,140 +113,267 @@
   }
   .split-btn-couples { background: var(--white); color: var(--black); }
   .split-btn-couples:hover { background: #e0e0de; }
-  .split-btn-planners { background: #1f1f1f; color: var(--white); border: 2px solid #333; }
+  .split-btn-planners { background: #1a1a1a; color: var(--white); border: 2px solid #333; }
   .split-btn-planners:hover { background: #2d2d2d; }
+  .split-btn-tag {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.45;
+    margin-bottom: 6px;
+  }
   .split-btn-sub {
     display: block;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 400;
-    color: inherit;
     opacity: 0.55;
-    margin-top: 4px;
+    margin-top: 6px;
     letter-spacing: 0.02em;
   }
 
-  .section { padding: 80px 24px; max-width: 600px; margin: 0 auto; }
+  /* FUNNEL LABEL BANNER */
+  .funnel-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 10px 24px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .funnel-banner-couples { background: var(--light-gray); color: #666; border-bottom: 2px solid var(--black); }
+  .funnel-banner-planners { background: #111; color: #555; border-bottom: 2px solid #333; }
+  .funnel-banner-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .funnel-banner-couples .funnel-banner-dot { background: var(--black); }
+  .funnel-banner-planners .funnel-banner-dot { background: #555; }
+
+  /* SECTION WRAPPER */
+  .section { padding: 72px 24px 80px; max-width: 600px; margin: 0 auto; }
   .section-divider { height: 3px; background: var(--black); max-width: 48px; margin-bottom: 32px; }
-  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
-  .section h2 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--black); }
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 12px;
+  }
+  .section h2 {
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
   .section p { font-size: 16px; line-height: 1.65; color: #444; margin-bottom: 16px; }
   .section p strong { color: var(--black); font-weight: 700; }
 
-  .bullets { list-style: none; margin: 24px 0 32px; }
-  .bullets li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.55; color: #333; padding: 10px 0; border-bottom: 1px solid var(--light-gray); }
+  /* BULLETS */
+  .bullets { list-style: none; margin: 24px 0 36px; }
+  .bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: #333;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--light-gray);
+  }
   .bullets li:last-child { border-bottom: none; }
   .bullet-arrow { font-weight: 900; color: var(--black); font-size: 13px; margin-top: 2px; flex-shrink: 0; }
 
+  /* FORM WRAPPER */
   .form-wrap { background: var(--white); border: 1.5px solid var(--light-gray); padding: 32px 28px; margin-top: 8px; }
-  .form-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 8px; }
+  .form-wrap-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray);
+    display: block;
+    margin-bottom: 16px;
+  }
   .form-privacy { font-size: 11px; color: var(--gray); margin-top: 12px; text-align: center; }
 
-  .section-dark { background: var(--black); padding: 80px 24px; }
-  .section-dark .section { padding: 0; }
+  /* DARK SECTION (PLANNERS) */
+  .section-dark { background: var(--black); }
+  .section-dark .section-divider { background: #333; }
   .section-dark .section-label { color: #555; }
-  .section-dark .section h2 { color: var(--white); }
+  .section-dark h2 { color: var(--white); }
   .section-dark .section p { color: #999; }
   .section-dark .section p strong { color: var(--white); }
   .section-dark .bullets li { color: #ccc; border-bottom-color: #1a1a1a; }
-  .section-dark .bullet-arrow { color: var(--white); }
-  .section-dark .section-divider { background: #333; }
+  .section-dark .bullet-arrow { color: #777; }
 
-  .tiers { margin: 24px 0 32px; display: flex; flex-direction: column; gap: 2px; }
-  .tier { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #111; border-left: 3px solid #333; }
-  .tier.tier-active { border-left-color: var(--white); }
+  /* FOUNDING TIERS */
+  .tiers { margin: 24px 0 28px; display: flex; flex-direction: column; gap: 2px; }
+  .tier {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: #0f0f0f;
+    border-left: 3px solid #1e1e1e;
+  }
+  .tier.tier-active { border-left-color: #555; }
   .tier-label { font-size: 13px; font-weight: 700; color: var(--white); }
-  .tier-detail { font-size: 12px; color: #666; margin-top: 2px; }
+  .tier-detail { font-size: 12px; color: #555; margin-top: 2px; }
   .tier-price { font-size: 15px; font-weight: 800; color: var(--white); text-align: right; }
-  .tier-price span { display: block; font-size: 10px; font-weight: 400; color: #555; text-transform: uppercase; letter-spacing: 0.08em; }
+  .tier-price span { display: block; font-size: 10px; font-weight: 400; color: #444; text-transform: uppercase; letter-spacing: 0.08em; }
 
-  .btn-apply { display: block; width: 100%; background: var(--white); color: var(--black); text-align: center; padding: 18px 24px; font-size: 15px; font-weight: 700; font-family: inherit; letter-spacing: 0.03em; text-decoration: none; cursor: pointer; border: none; transition: background 0.15s; margin-top: 8px; }
+  /* PLANNER CTA */
+  .btn-apply {
+    display: block;
+    width: 100%;
+    background: var(--white);
+    color: var(--black);
+    text-align: center;
+    padding: 18px 24px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    transition: background 0.15s;
+    margin-top: 8px;
+  }
   .btn-apply:hover { background: #e8e8e6; }
-  .apply-note { font-size: 11px; color: #555; margin-top: 10px; text-align: center; }
+  .apply-note { font-size: 11px; color: #444; margin-top: 10px; text-align: center; }
 
+  /* FOOTER */
   footer { background: var(--black); border-top: 1px solid #111; padding: 32px 24px; text-align: center; }
   footer p { font-size: 12px; color: #444; margin-bottom: 6px; }
-  footer a { color: #666; text-decoration: none; }
+  footer a { color: #555; text-decoration: none; }
   footer a:hover { color: var(--white); }
 
-  .scroll-target { scroll-margin-top: 56px; }
+  .scroll-target { scroll-margin-top: 52px; }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav class="nav">
   <a href="#" class="nav-brand">Do Better Weddings</a>
   <a href="https://instagram.com/dobetterweddings" class="nav-ig">@dobetterweddings</a>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <p class="hero-eyebrow">From the cluttered desk of @doBetterWeddings</p>
   <h1>Built for grooms.<br><em>Useful for everyone.</em></h1>
-  <p class="hero-sub">Pick where you're starting. Everything here is free.</p>
+  <p class="hero-sub">Pick your path. Everything here is free or straightforward — no bait and switch.</p>
+  <p class="hero-direction">↓ Who are you? ↓</p>
+
   <div class="split">
     <a href="#couples" class="split-btn split-btn-couples">
+      <span class="split-btn-tag">Funnel 1</span>
       I'm a Groom / Couple
-      <span class="split-btn-sub">Free Survival Guide ↓</span>
+      <span class="split-btn-sub">Free Survival Guide →</span>
     </a>
     <a href="#planners" class="split-btn split-btn-planners">
+      <span class="split-btn-tag">Funnel 2</span>
       I'm a Wedding Planner
-      <span class="split-btn-sub">Founding Member Access ↓</span>
+      <span class="split-btn-sub">Founding Member Access →</span>
     </a>
   </div>
 </section>
 
-<section id="couples" class="scroll-target" style="background: var(--off-white);">
+<!-- FUNNEL 1: COUPLES / GROOMS -->
+<div class="funnel-banner funnel-banner-couples" id="couples">
+  <div class="funnel-banner-dot"></div>
+  FUNNEL 1 — Grooms &amp; Couples
+  <div class="funnel-banner-dot"></div>
+</div>
+
+<section class="scroll-target" style="background: var(--off-white);">
   <div class="section">
     <div class="section-label">For Grooms &amp; Couples</div>
     <div class="section-divider"></div>
     <h2>The Free Groom Survival Guide</h2>
-    <p>Nobody handed you a manual when you got engaged. You're supposed to just know stuff? This fixes that.</p>
+
+    <p>Nobody handed you a manual when you got engaged. You're supposed to just… know stuff? This fixes that.</p>
     <p><strong>Four pages. No fluff.</strong> The exact moves that make grooms useful, not just present.</p>
+
     <ul class="bullets">
-      <li><span class="bullet-arrow">→</span><span>Know your vendor lineup cold -- who to call, what they handle, chain of command on the day</span></li>
+      <li><span class="bullet-arrow">→</span><span>Know your vendor lineup cold — who to call, what they handle, chain of command on the day</span></li>
       <li><span class="bullet-arrow">→</span><span>The quiet moves that matter more than any opinion on centerpieces (and she'll actually notice)</span></li>
       <li><span class="bullet-arrow">→</span><span>What to carry, when to eat, and how to not be the guy fumbling for contact info at 10am</span></li>
-      <li><span class="bullet-arrow">→</span><span>Game-day flow from getting ready to last dance so nothing catches you off guard</span></li>
+      <li><span class="bullet-arrow">→</span><span>Game-day flow from getting ready to last dance — so nothing catches you off guard</span></li>
     </ul>
+
     <div class="form-wrap">
-      <label class="form-label">Get the guide -- it's free</label>
-      <script async data-uid="77c2d63066" src="https://do-better-weddings.kit.com/77c2d63066/index.js"><\/script>
+      <span class="form-wrap-label">Get the guide — it's free</span>
+      <script async data-uid="77c2d63066" src="https://do-better-weddings.kit.com/77c2d63066/index.js"></script>
       <p class="form-privacy">No spam. One email a week max. Unsubscribe anytime.</p>
     </div>
   </div>
 </section>
 
-<div class="section-dark">
-  <section id="planners" class="scroll-target">
-    <div class="section">
-      <div class="section-label">For Wedding Planners</div>
-      <div class="section-divider"></div>
-      <h2>Done figuring this out alone.</h2>
-      <p>Most planner communities are either overpriced courses or Facebook groups full of drama and "what should I charge for a micro-wedding" posts.</p>
-      <p><strong>This is a tight room for operators.</strong> Vendor strategy, pricing frameworks, client communication scripts. The stuff that took years to figure out, shared openly.</p>
-      <div class="tiers">
-        <div class="tier tier-active">
-          <div><div class="tier-label">Founding Member</div><div class="tier-detail">First 5 people -- in free, forever</div></div>
-          <div class="tier-price">Free<span>always</span></div>
-        </div>
-        <div class="tier tier-active">
-          <div><div class="tier-label">Founding Partner</div><div class="tier-detail">Next 15 -- locked in permanently</div></div>
-          <div class="tier-price">$49/mo<span>locked rate</span></div>
-        </div>
-        <div class="tier">
-          <div><div class="tier-label">Standard</div><div class="tier-detail">After Founding Partners fill</div></div>
-          <div class="tier-price">$99/mo<span>standard</span></div>
-        </div>
-      </div>
-      <a href="https://www.instagram.com/dobetterweddings" class="btn-apply">DM me "FOUNDING" on Instagram to Apply →</a>
-      <p class="apply-note">I review every application. Gates open Thursday.</p>
-    </div>
-  </section>
+<!-- FUNNEL 2: WEDDING PLANNERS -->
+<div class="funnel-banner funnel-banner-planners" id="planners">
+  <div class="funnel-banner-dot"></div>
+  FUNNEL 2 — Wedding Planners
+  <div class="funnel-banner-dot"></div>
 </div>
 
+<section class="scroll-target section-dark">
+  <div class="section">
+    <div class="section-label">For Wedding Planners</div>
+    <div class="section-divider"></div>
+    <h2>Done figuring this out alone.</h2>
+
+    <p>Most planner communities are either overpriced courses or Facebook groups full of drama and "what should I charge for a micro-wedding" posts.</p>
+    <p><strong>This is a tight room for operators.</strong> Vendor strategy, pricing frameworks, client communication scripts. The stuff that took years to figure out — shared openly.</p>
+
+    <ul class="bullets">
+      <li><span class="bullet-arrow">→</span><span>Pricing frameworks that stop the race to the bottom — with numbers you can actually defend</span></li>
+      <li><span class="bullet-arrow">→</span><span>Vendor relationship strategy for markets where everyone knows everyone</span></li>
+      <li><span class="bullet-arrow">→</span><span>Client communication scripts for the conversations nobody teaches you</span></li>
+      <li><span class="bullet-arrow">→</span><span>Direct access to other operators doing real volume — not hobbyists and not coaches</span></li>
+    </ul>
+
+    <div class="tiers">
+      <div class="tier tier-active">
+        <div>
+          <div class="tier-label">Founding Member</div>
+          <div class="tier-detail">First 5 people — in free, forever</div>
+        </div>
+        <div class="tier-price">Free<span>always</span></div>
+      </div>
+      <div class="tier tier-active">
+        <div>
+          <div class="tier-label">Founding Partner</div>
+          <div class="tier-detail">Next 15 — locked in permanently</div>
+        </div>
+        <div class="tier-price">$49/mo<span>locked rate</span></div>
+      </div>
+      <div class="tier">
+        <div>
+          <div class="tier-label">Standard</div>
+          <div class="tier-detail">After Founding Partners fill</div>
+        </div>
+        <div class="tier-price">$99/mo<span>standard</span></div>
+      </div>
+    </div>
+
+    <a href="https://www.instagram.com/dobetterweddings" class="btn-apply">
+      DM me "FOUNDING" on Instagram to Apply →
+    </a>
+    <p class="apply-note">Application reviewed personally. Gates open Thursday.</p>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <p><a href="https://instagram.com/dobetterweddings">@doBetterWeddings</a></p>
   <p>Built for grooms. Useful for everyone.</p>
 </footer>
 
 </body>
-  </html>
+</html>
