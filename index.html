@@ -1,141 +1,918 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Do Better Weddings</title>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root { --black: #0A0A0A; --white: #FAFAFA; --off-white: #F2F2F0; --gray: #888; --light-gray: #E8E8E6; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif; background: var(--off-white); color: var(--black); -webkit-font-smoothing: antialiased; }
-  .nav { background: var(--black); padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
-  .nav-brand { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; }
-  .nav-ig { color: var(--gray); font-size: 12px; text-decoration: none; letter-spacing: 0.04em; }
-  .nav-ig:hover { color: var(--white); }
-  .hero { background: var(--black); color: var(--white); padding: 72px 24px 80px; text-align: center; }
-  .hero-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gray); margin-bottom: 20px; }
-  .hero h1 { font-size: clamp(36px, 7vw, 64px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; max-width: 700px; margin-left: auto; margin-right: auto; }
-  .hero h1 em { font-style: normal; color: #aaa; }
-  .hero-sub { font-size: 16px; color: #999; max-width: 480px; margin: 0 auto 16px; line-height: 1.6; }
-  .hero-direction { font-size: 12px; color: #555; margin-bottom: 32px; letter-spacing: 0.06em; text-transform: uppercase; }
-  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; max-width: 680px; margin: 0 auto; }
-  @media (max-width: 560px) { .split { grid-template-columns: 1fr; } }
-  .split-btn { display: block; padding: 24px; text-align: center; text-decoration: none; font-weight: 700; font-size: 16px; letter-spacing: 0.01em; transition: all 0.15s ease; cursor: pointer; border: none; }
-  .split-btn-couples { background: var(--white); color: var(--black); }
-  .split-btn-couples:hover { background: #e0e0de; }
-  .split-btn-planners { background: #1a1a1a; color: var(--white); border: 2px solid #333; }
-  .split-btn-planners:hover { background: #2d2d2d; }
-  .split-btn-sub { display: block; font-size: 12px; font-weight: 400; opacity: 0.55; margin-top: 6px; letter-spacing: 0.02em; }
-  .funnel-banner { display: flex; align-items: center; justify-content: center; gap: 12px; padding: 10px 24px; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
-  .funnel-banner-couples { background: var(--light-gray); color: #666; border-bottom: 2px solid var(--black); }
-  .funnel-banner-planners { background: #111; color: #888; border-bottom: 2px solid #333; }
-  .funnel-banner-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-  .funnel-banner-couples .funnel-banner-dot { background: var(--black); }
-  .funnel-banner-planners .funnel-banner-dot { background: #555; }
-  .section { padding: 72px 24px 80px; max-width: 600px; margin: 0 auto; }
-  .section-divider { height: 3px; background: var(--black); max-width: 48px; margin-bottom: 32px; }
-  .section-label { font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gray); margin-bottom: 12px; }
-  .section h2 { font-size: clamp(28px, 5vw, 44px); font-weight: 800; line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 20px; }
-  .section p { font-size: 16px; line-height: 1.65; color: #444; margin-bottom: 16px; }
-  .section p strong { color: var(--black); font-weight: 700; }
-  .bullets { list-style: none; margin: 24px 0 36px; }
-  .bullets li { display: flex; align-items: flex-start; gap: 12px; font-size: 15px; line-height: 1.55; color: #333; padding: 12px 0; border-bottom: 1px solid var(--light-gray); }
-  .bullets li:last-child { border-bottom: none; }
-  .bullet-arrow { font-weight: 900; color: var(--black); font-size: 13px; margin-top: 2px; flex-shrink: 0; }
-  .form-wrap { background: var(--white); border: 1.5px solid var(--light-gray); padding: 32px 28px; margin-top: 8px; }
-  .form-wrap-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); display: block; margin-bottom: 16px; }
-  .form-privacy { font-size: 11px; color: var(--gray); margin-top: 12px; text-align: center; }
-  .section-dark { background: var(--black); }
-  .section-dark .section-divider { background: #333; }
-  .section-dark .section-label { color: #555; }
-  .section-dark h2 { color: var(--white); }
-  .section-dark .section p { color: #bbb; }
-  .section-dark .section p strong { color: var(--white); }
-  .section-dark .bullets li { color: #ccc; border-bottom-color: #1a1a1a; }
-  .section-dark .bullet-arrow { color: #777; }
-  .tiers { margin: 24px 0 28px; display: flex; flex-direction: column; gap: 2px; }
-  .tier { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: #0f0f0f; border-left: 3px solid #1e1e1e; }
-  .tier.tier-active { border-left-color: #555; }
-  .tier-label { font-size: 13px; font-weight: 700; color: var(--white); }
-  .tier-detail { font-size: 12px; color: #888; margin-top: 2px; }
-  .tier-price { font-size: 15px; font-weight: 800; color: var(--white); text-align: right; }
-  .tier-price span { display: block; font-size: 10px; font-weight: 400; color: #444; text-transform: uppercase; letter-spacing: 0.08em; }
-  .btn-apply { display: block; width: 100%; background: var(--white); color: var(--black); text-align: center; padding: 18px 24px; font-size: 15px; font-weight: 700; font-family: inherit; letter-spacing: 0.03em; text-decoration: none; transition: background 0.15s; margin-top: 8px; }
-  .btn-apply:hover { background: #e8e8e6; }
-  .apply-note { font-size: 11px; color: #444; margin-top: 10px; text-align: center; }
-  footer { background: var(--black); border-top: 1px solid #111; padding: 32px 24px; text-align: center; }
-  footer p { font-size: 12px; color: #444; margin-bottom: 6px; }
-  footer a { color: #555; text-decoration: none; }
-  footer a:hover { color: var(--white); }
-  .scroll-target { scroll-margin-top: 52px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do Better Weddings</title>
+  <meta name="description" content="Free groom survival guide, wedding day game plan for couples, and a pro community for wedding planners. Built for grooms. Useful for everyone.">
+  <link rel="canonical" href="https://dobetterweddings.co">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dobetterweddings.co">
+  <meta property="og:title" content="Do Better Weddings">
+  <meta property="og:description" content="Free groom survival guide, wedding day game plan for couples, and a pro community for wedding planners.">
+  <meta property="og:site_name" content="Do Better Weddings">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Do Better Weddings">
+  <meta name="twitter:description" content="Free groom survival guide, wedding day game plan for couples, and a pro community for wedding planners.">
+  <meta name="twitter:site" content="@dobetterweddings">
+
+  <!-- Favicon (inline SVG) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A0A0A'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='900' fill='%23FAFAFA' text-anchor='middle'%3EDB%3C/text%3E%3C/svg%3E">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    :root {
+      --black: #0A0A0A;
+      --white: #FAFAFA;
+      --off-white: #F2F2F0;
+      --gray: #888;
+      --light-gray: #E8E8E6;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: var(--off-white);
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    .nav {
+      background: var(--black);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-brand {
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-ig {
+      color: var(--gray);
+      font-size: 12px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-ig:hover { color: var(--white); }
+
+    /* HERO */
+    .hero {
+      background: var(--black);
+      color: var(--white);
+      padding: 72px 24px 80px;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 7vw, 64px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: #aaa;
+    }
+    .hero-sub {
+      font-size: 16px;
+      color: #666;
+      max-width: 480px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    /* SPLIT: 2 parent columns, each with its own buttons */
+    .split-outer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      max-width: 840px;
+      margin: 0 auto;
+    }
+    .split-col {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .split-col-header {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #555;
+      text-align: center;
+      padding: 10px 16px 9px;
+    }
+    .split-inner {
+      display: grid;
+      gap: 3px;
+      flex: 1;
+    }
+    .split-inner-2 { grid-template-columns: 1fr 1fr; }
+    .split-inner-1 { grid-template-columns: 1fr; }
+
+    .split-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 22px 14px;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.01em;
+      transition: background 0.15s;
+      min-height: 108px;
+    }
+
+    /* Free Guide: bright white, clearly the free option */
+    .split-btn-couples {
+      background: var(--white);
+      color: var(--black);
+    }
+    .split-btn-couples:hover { background: #e8e8e6; }
+
+    /* Game Plan: off-white + border, clearly different from free */
+    .split-btn-gameplan {
+      background: var(--off-white);
+      color: var(--black);
+      border: 2px solid rgba(10,10,10,0.25);
+    }
+    .split-btn-gameplan:hover { background: var(--light-gray); }
+
+    /* Wedding Pros: dark, matches their section */
+    .split-btn-planners {
+      background: #1a1a1a;
+      color: var(--white);
+      border: 2px solid #2e2e2e;
+      min-height: 108px;
+    }
+    .split-btn-planners:hover { background: #272727; }
+
+    .split-btn-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .split-btn-sub {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      opacity: 0.55;
+      margin-top: 5px;
+      letter-spacing: 0.01em;
+      line-height: 1.4;
+    }
+
+    /* TAGS */
+    .split-tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      margin-top: 10px;
+    }
+    .split-tag-free {
+      background: var(--black);
+      color: var(--white);
+    }
+    .split-tag-free-dark {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    /* Price anchor in game plan button */
+    .split-price-anchor {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 10px;
+    }
+    .split-price-new {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--black);
+      letter-spacing: -0.02em;
+    }
+    .split-price-old {
+      font-size: 11px;
+      font-weight: 500;
+      color: #aaa;
+      text-decoration: line-through;
+      letter-spacing: 0;
+    }
+
+    @media (max-width: 680px) {
+      .split-outer { grid-template-columns: 1fr; }
+      .split-inner-2 { grid-template-columns: 1fr; }
+    }
+
+    /* FUNNEL BANNERS */
+    .funnel-banner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 10px 24px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .funnel-banner-couples {
+      background: var(--light-gray);
+      color: #666;
+      border-bottom: 2px solid var(--black);
+    }
+    .funnel-banner-gameplan {
+      background: var(--off-white);
+      color: #555;
+      border-top: 2px solid var(--black);
+      border-bottom: 2px solid var(--black);
+    }
+    .funnel-banner-planners {
+      background: #111;
+      color: #666;
+      border-bottom: 2px solid #2a2a2a;
+    }
+    .funnel-banner-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .funnel-banner-couples .funnel-banner-dot { background: var(--black); }
+    .funnel-banner-gameplan .funnel-banner-dot { background: var(--black); }
+    .funnel-banner-planners .funnel-banner-dot { background: #555; }
+
+    /* SECTIONS */
+    .scroll-target { scroll-margin-top: 52px; }
+    .section {
+      padding: 72px 24px 80px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .section-divider {
+      height: 3px;
+      background: var(--black);
+      max-width: 48px;
+      margin-bottom: 32px;
+    }
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 12px;
+    }
+    .section h2 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+    .section p {
+      font-size: 16px;
+      line-height: 1.65;
+      color: #444;
+      margin-bottom: 16px;
+    }
+    .section p strong { color: var(--black); font-weight: 700; }
+
+    /* BULLETS */
+    .bullets { list-style: none; margin: 24px 0 36px; }
+    .bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      line-height: 1.55;
+      color: #333;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--light-gray);
+    }
+    .bullets li:last-child { border-bottom: none; }
+    .bullet-arrow {
+      font-weight: 900;
+      color: var(--black);
+      font-size: 13px;
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    /* KIT FORM WRAP */
+    .form-wrap {
+      background: var(--white);
+      border: 1.5px solid var(--light-gray);
+      padding: 32px 28px;
+      margin-top: 8px;
+    }
+    .form-wrap-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .form-privacy {
+      font-size: 11px;
+      color: #999;
+      margin-top: 12px;
+    }
+
+    /* DARK SECTION (WEDDING PROS) */
+    .section-dark { background: var(--black); }
+    .section-dark .section-divider { background: #333; }
+    .section-dark .section-label { color: #555; }
+    .section-dark h2 { color: var(--white); }
+    .section-dark .section p { color: #bbb; }
+    .section-dark .section p strong { color: var(--white); }
+    .section-dark .bullets li { color: #ccc; border-bottom-color: #1a1a1a; }
+    .section-dark .bullet-arrow { color: #777; }
+
+    /* PRICING TIERS */
+    .tiers {
+      margin: 24px 0 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .tier {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: #0f0f0f;
+      border-left: 3px solid #1e1e1e;
+    }
+    .tier.tier-active { border-left-color: #555; }
+    .tier-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .tier-detail {
+      font-size: 12px;
+      color: #888;
+      margin-top: 2px;
+    }
+    .tier-price {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--white);
+      text-align: right;
+    }
+    .tier-price span {
+      display: block;
+      font-size: 10px;
+      font-weight: 400;
+      color: #444;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .btn-apply {
+      display: block;
+      width: 100%;
+      background: var(--white);
+      color: var(--black);
+      text-align: center;
+      padding: 18px 24px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: inherit;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: background 0.15s;
+      margin-top: 8px;
+    }
+    .btn-apply:hover { background: var(--light-gray); }
+    .apply-note {
+      font-size: 11px;
+      color: #444;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* GAME PLAN PRICE CALLOUT */
+    .price-callout {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin: 32px 0 6px;
+      flex-wrap: wrap;
+    }
+    .price-launch {
+      font-size: clamp(48px, 10vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: var(--black);
+    }
+    .price-original {
+      font-size: 24px;
+      font-weight: 600;
+      color: #aaa;
+      text-decoration: line-through;
+    }
+    .price-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gray);
+      background: var(--light-gray);
+      padding: 4px 10px;
+      align-self: center;
+    }
+
+    /* BOOK NOW BUTTON */
+    .btn-book {
+      display: block;
+      width: 100%;
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 20px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: inherit;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: background 0.15s;
+      margin-top: 12px;
+    }
+    .btn-book:hover { background: #222; }
+    .book-note {
+      font-size: 11px;
+      color: #888;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* DELIVERABLES BOX */
+    .deliverables {
+      background: var(--white);
+      border: 1.5px solid var(--light-gray);
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .deliverables-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+
+    /* MOCKUP STRIP */
+    .mockup-strip-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin: 40px 0 16px;
+    }
+    .mockup-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 600px) {
+      .mockup-strip {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+    }
+    .mini-phone {
+      background: #0a0a0a;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+    }
+    .mini-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 12px 8px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .mini-tag {
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 20px;
+    }
+    .mini-count {
+      font-size: 8px;
+      font-weight: 600;
+      color: #444;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .mini-blocks {
+      padding: 6px 8px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .mini-block {
+      border-radius: 6px;
+      padding: 6px 8px;
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      border-left: 2px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .mini-block-ceremony {
+      background: rgba(250,250,250,0.06);
+      border-left: 2px solid #fafafa;
+    }
+    .mini-time {
+      font-size: 8px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+    }
+    .mini-title {
+      font-size: 9px;
+      font-weight: 600;
+      color: #ccc;
+      line-height: 1.3;
+    }
+    .mini-alert {
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #C86E64;
+      background: rgba(200,110,100,0.15);
+      padding: 2px 5px;
+      border-radius: 3px;
+      margin-top: 2px;
+      display: inline-block;
+    }
+    .mini-footer {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #333;
+      text-align: center;
+      padding: 8px 12px 10px;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--black);
+      border-top: 1px solid #111;
+      padding: 32px 24px;
+      text-align: center;
+    }
+    footer p {
+      font-size: 12px;
+      color: #444;
+      margin-bottom: 6px;
+    }
+    footer a { color: #555; text-decoration: none; }
+    footer a:hover { color: var(--white); }
+  </style>
 </head>
 <body>
-<nav class="nav">
-  <a href="#" class="nav-brand">Do Better Weddings</a>
-  <a href="https://instagram.com/dobetterweddings" class="nav-ig">@dobetterweddings</a>
-</nav>
-<section class="hero">
-  <p class="hero-eyebrow">From the cluttered desk of @doBetterWeddings</p>
-  <h1>Built for grooms.<br><em>Useful for everyone.</em></h1>
-  <p class="hero-sub">Pick your path. Everything here is free or straightforward. No bait and switch.</p>
-  <p class="hero-direction">Who are you?</p>
-  <div class="split">
-    <a href="#couples" class="split-btn split-btn-couples">I'm a Groom / Couple<span class="split-btn-sub">Free Survival Guide</span></a>
-    <a href="#planners" class="split-btn split-btn-planners">I'm a Wedding Planner<span class="split-btn-sub">Founding Member Access</span></a>
-  </div>
-</section>
-<div class="funnel-banner funnel-banner-couples" id="couples">
-  <div class="funnel-banner-dot"></div>For Grooms &amp; Couples<div class="funnel-banner-dot"></div>
-</div>
-<section class="scroll-target" style="background: var(--off-white);">
-  <div class="section">
-    <div class="section-label">For Grooms &amp; Couples</div>
-    <div class="section-divider"></div>
-    <h2>The Free Groom Survival Guide</h2>
-    <p>Nobody handed you a manual when you got engaged. You're supposed to just know stuff? This fixes that.</p>
-    <p><strong>Four pages. No fluff.</strong> The exact moves that make grooms useful, not just present.</p>
-    <ul class="bullets">
-      <li><span class="bullet-arrow">&#8594;</span><span>Know your vendor lineup cold: who to call, what they handle, chain of command on the day</span></li>
-      <li><span class="bullet-arrow">&#8594;</span><span>The quiet moves that matter more than any opinion on centerpieces (and she'll actually notice)</span></li>
-      <li><span class="bullet-arrow">&#8594;</span><span>What to carry, when to eat, and how to not be the guy fumbling for contact info at 10am</span></li>
-      <li><span class="bullet-arrow">&#8594;</span><span>Game-day flow from getting ready to last dance so nothing catches you off guard</span></li>
-    </ul>
-    <div class="form-wrap">
-      <span class="form-wrap-label">Get the guide. It's free.</span>
-      <script async data-uid="77c2d63066" src="https://do-better-weddings.kit.com/77c2d63066/index.js"></script>
-      <p class="form-privacy">No spam. One email a week max. Unsubscribe anytime.</p>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#" class="nav-brand">Do Better Weddings</a>
+    <a href="https://instagram.com/dobetterweddings" class="nav-ig">@dobetterweddings</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">From the cluttered desk of @doBetterWeddings</p>
+    <h1>Built for grooms.<br><em>Useful for everyone.</em></h1>
+    <p class="hero-sub">Three options. How can I help you?</p>
+
+    <div class="split-outer">
+
+      <!-- LEFT COLUMN: I'm Getting Married -->
+      <div class="split-col">
+        <p class="split-col-header">I'm Getting Married</p>
+        <div class="split-inner split-inner-2">
+
+          <a href="#couples" class="split-btn split-btn-couples">
+            <span class="split-btn-label">Free Survival Guide</span>
+            <span class="split-btn-sub">For grooms who want to actually be useful</span>
+            <span class="split-tag split-tag-free">Free</span>
+          </a>
+
+          <a href="#gameplan" class="split-btn split-btn-gameplan">
+            <span class="split-btn-label">We need a Game Plan</span>
+            <span class="split-btn-sub">Wedding Day Game Plan for Couples</span>
+            <span class="split-price-anchor">
+              <span class="split-price-new">$99</span>
+              <span class="split-price-old">$249</span>
+            </span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: I'm a Wedding Pro -->
+      <div class="split-col">
+        <p class="split-col-header">I'm a Wedding Pro</p>
+        <div class="split-inner split-inner-1">
+
+          <a href="#planners" class="split-btn split-btn-planners">
+            <span class="split-btn-label">Free community for the best wedding pros</span>
+            <span class="split-btn-sub">Operators only. No hobbyists.</span>
+            <span class="split-tag split-tag-free-dark">Free</span>
+          </a>
+
+        </div>
+      </div>
+
     </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SECTION 1: GROOM SURVIVAL GUIDE                  -->
+  <!-- ================================================ -->
+  <div id="couples" class="funnel-banner funnel-banner-couples">
+    <span class="funnel-banner-dot"></span>
+    For Grooms &amp; Couples
   </div>
-</section>
-<div class="funnel-banner funnel-banner-planners" id="planners">
-  <div class="funnel-banner-dot"></div>For Wedding Planners<div class="funnel-banner-dot"></div>
-</div>
-<section class="scroll-target section-dark">
-  <div class="section">
-    <div class="section-label">For Wedding Planners</div>
-    <div class="section-divider"></div>
-    <h2>Done figuring this out alone.</h2>
-    <p>Most planner communities are either overpriced courses or Facebook groups full of drama and "what should I charge for a micro-wedding" posts.</p>
-    <p><strong>This is a tight room for operators.</strong> Vendor strategy, pricing frameworks, client communication scripts. The stuff that took years to figure out, shared openly.</p>
-    <ul class="bullets">
-      <li><span class="bullet-arrow">&#8594;</span><span>Pricing frameworks that stop the race to the bottom, with numbers you can actually defend</span></li>
-      <li><span class="bullet-arrow">&#8594;</span><span>Vendor relationship strategy for markets where everyone knows everyone</span></li>
-      <li><span class="bullet-arrow">&#8594;</span><span>Client communication scripts for the conversations nobody teaches you</span></li>
-      <li><span class="bullet-arrow">&#8594;</span><span>Direct access to other operators doing real volume, not hobbyists and not coaches</span></li>
-    </ul>
-    <div class="tiers">
-      <div class="tier tier-active"><div><div class="tier-label">Founding Member</div><div class="tier-detail">First 50 people. Free, forever.</div></div><div class="tier-price">Free<span>always</span></div></div>
-      <div class="tier tier-active"><div><div class="tier-label">Founding Partner</div><div class="tier-detail">Next 50. Locked in permanently.</div></div><div class="tier-price">$49/mo<span>locked rate</span></div></div>
-      <div class="tier"><div><div class="tier-label">Standard</div><div class="tier-detail">After Founding Partners fill</div></div><div class="tier-price">$99/mo<span>standard</span></div></div>
+
+  <section class="scroll-target">
+    <div class="section">
+      <div class="section-label">For Grooms &amp; Couples</div>
+      <div class="section-divider"></div>
+      <h2>The Free Groom Survival Guide</h2>
+      <p>Nobody handed you a manual when you got engaged. You're supposed to just know stuff? <strong>This fixes that.</strong></p>
+      <p>Four pages. No fluff. The exact moves that make grooms useful, not just present.</p>
+      <ul class="bullets">
+        <li><span class="bullet-arrow">â</span><span>Know your vendor lineup cold: who to call, what they handle, chain of command on the day</span></li>
+        <li><span class="bullet-arrow">â</span><span>The quiet moves that matter more than any opinion on centerpieces (and she'll actually notice)</span></li>
+        <li><span class="bullet-arrow">â</span><span>What to carry, when to eat, and how to not be the guy fumbling for contact info at 10am</span></li>
+        <li><span class="bullet-arrow">â</span><span>Game-day flow from getting ready to last dance so nothing catches you off guard</span></li>
+      </ul>
+      <div class="form-wrap">
+        <span class="form-wrap-label">Get the guide. It's free.</span>
+        <script async data-uid="77c2d63066" src="https://dobetterweddings.kit.com/77c2d63066/index.js"></script>
+        <p class="form-privacy">No spam. One email a week max. Unsubscribe anytime.</p>
+      </div>
     </div>
-    <a href="https://skool.com/do-better-weddings-3436" class="btn-apply" target="_blank">Join the DBW Community on Skool</a>
-    <p class="apply-note">Application reviewed personally. Founding Member spots are limited.</p>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SECTION 2: WEDDING DAY GAME PLAN                 -->
+  <!-- ================================================ -->
+  <div id="gameplan" class="funnel-banner funnel-banner-gameplan">
+    <span class="funnel-banner-dot"></span>
+    For Everyone Getting Married
   </div>
-</section>
-<footer>
-  <p><a href="https://instagram.com/dobetterweddings">@doBetterWeddings</a></p>
-  <p>Built for grooms. Useful for everyone.</p>
-</footer>
+
+  <section class="scroll-target">
+    <div class="section">
+      <div class="section-label">For Couples</div>
+      <div class="section-divider"></div>
+      <h2>The Wedding Day Game Plan.</h2>
+      <p>Doesn't matter how much help you have. Full planning team, venue coordinator, a family friend who volunteered, or just the two of you figuring it out. There is one thing every single person at your wedding needs regardless of any of that.</p>
+      <p><strong>A coherent timeline. And their version of it.</strong></p>
+      <p>Your savvy maid of honor, your stressed-out photographer, your half-drunk groomsman, and your caterer who just texted asking what time dinner starts. They all need different information. We build one Master Timeline, then break it into custom versions for every person who needs one. Each formatted to send as a text or save on their phone.</p>
+
+      <div class="deliverables">
+        <p class="deliverables-label">What you get</p>
+        <ul class="bullets" style="margin: 0;">
+          <li><span class="bullet-arrow">â</span><span>30-min strategy call to map your entire wedding day, start to finish</span></li>
+          <li><span class="bullet-arrow">â</span><span>Master Timeline: every vendor, every family member, every moving piece in one document</span></li>
+          <li><span class="bullet-arrow">â</span><span>Custom role timelines delivered within 48 hours: Bridal Party, Groomsmen, Photographer Shot Sheet, Vendor Call Sheet. Each one built to text or save as a phone screen</span></li>
+          <li><span class="bullet-arrow">â</span><span>Vendor coordination: I personally reach out to confirm every vendor has their version and is aligned</span></li>
+          <li><span class="bullet-arrow">â</span><span>15-min pre-wedding check-in 1-2 weeks out to lock everything in</span></li>
+        </ul>
+      </div>
+
+      <!-- MOCKUP STRIP -->
+      <p class="mockup-strip-label">What each person gets on their phone</p>
+      <div class="mockup-strip">
+
+        <!-- Bridesmaid Timeline -->
+        <div class="mini-phone">
+          <div class="mini-header">
+            <span class="mini-tag" style="background:#D69882;color:#0a0a0a;">Bridesmaids</span>
+            <span class="mini-count">5 people</span>
+          </div>
+          <div class="mini-blocks">
+            <div class="mini-block" style="--accent:#D69882;">
+              <span class="mini-time">8:00 AM</span>
+              <span class="mini-title">Arrive Suite 412</span>
+            </div>
+            <div class="mini-block" style="--accent:#D69882;">
+              <span class="mini-time">8:30 AM</span>
+              <span class="mini-title">Hair begins</span>
+            </div>
+            <div class="mini-block" style="--accent:#C4A262;">
+              <span class="mini-time">11:30 AM</span>
+              <span class="mini-title">Get dressed</span>
+              <span class="mini-alert">Do not leave without bride</span>
+            </div>
+            <div class="mini-block" style="--accent:#9482BE;">
+              <span class="mini-time">1:30 PM</span>
+              <span class="mini-title">Move to ceremony</span>
+            </div>
+            <div class="mini-block mini-block-ceremony">
+              <span class="mini-time" style="color:#f0f0f0;">2:00 PM</span>
+              <span class="mini-title" style="color:#fff;">Ceremony</span>
+              <span class="mini-alert" style="color:#9482BE;background:rgba(148,130,190,0.15);">Silence phones now</span>
+            </div>
+            <div class="mini-block" style="--accent:#506EA0;">
+              <span class="mini-time">5:00 PM</span>
+              <span class="mini-title">Reception + dancing</span>
+            </div>
+          </div>
+          <div class="mini-footer">Bridesmaid Timeline</div>
+        </div>
+
+        <!-- Photographer Shot Sheet -->
+        <div class="mini-phone">
+          <div class="mini-header">
+            <span class="mini-tag" style="background:#82A882;color:#0a0a0a;">Photography</span>
+            <span class="mini-count">shot sheet</span>
+          </div>
+          <div class="mini-blocks">
+            <div class="mini-block" style="--accent:#82A882;">
+              <span class="mini-time">11:00 AM</span>
+              <span class="mini-title">Detail shots, rings, dress</span>
+            </div>
+            <div class="mini-block" style="--accent:#82A882;">
+              <span class="mini-time">12:15 PM</span>
+              <span class="mini-title">Bride getting ready</span>
+            </div>
+            <div class="mini-block" style="--accent:#C4A262;">
+              <span class="mini-time">1:00 PM</span>
+              <span class="mini-title">First look (garden path)</span>
+              <span class="mini-alert" style="color:#C4A262;background:rgba(196,162,98,0.12);">Just bride + groom, no guests</span>
+            </div>
+            <div class="mini-block" style="--accent:#C4A262;">
+              <span class="mini-time">1:30 PM</span>
+              <span class="mini-title">Bridal party portraits</span>
+            </div>
+            <div class="mini-block mini-block-ceremony">
+              <span class="mini-time" style="color:#f0f0f0;">2:00 PM</span>
+              <span class="mini-title" style="color:#fff;">Ceremony (aisle wide, no flash)</span>
+            </div>
+            <div class="mini-block" style="--accent:#82A882;">
+              <span class="mini-time">3:00 PM</span>
+              <span class="mini-title">Family formals (list in notes)</span>
+            </div>
+          </div>
+          <div class="mini-footer">Photographer Shot Sheet</div>
+        </div>
+
+        <!-- Vendor Call Sheet -->
+        <div class="mini-phone">
+          <div class="mini-header">
+            <span class="mini-tag" style="background:#7894BE;color:#0a0a0a;">Vendors</span>
+            <span class="mini-count">all contacts</span>
+          </div>
+          <div class="mini-blocks">
+            <div class="mini-block" style="--accent:#7894BE;">
+              <span class="mini-time">11:00 AM</span>
+              <span class="mini-title">Florist: final setup done</span>
+            </div>
+            <div class="mini-block" style="--accent:#D69882;">
+              <span class="mini-time">12:00 PM</span>
+              <span class="mini-title">Caterer: kitchen access</span>
+            </div>
+            <div class="mini-block" style="--accent:#82A882;">
+              <span class="mini-time">1:00 PM</span>
+              <span class="mini-title">DJ: sound check complete</span>
+              <span class="mini-alert" style="color:#82A882;background:rgba(130,168,130,0.12);">Ceremony playlist cued</span>
+            </div>
+            <div class="mini-block mini-block-ceremony">
+              <span class="mini-time" style="color:#f0f0f0;">2:00 PM</span>
+              <span class="mini-title" style="color:#fff;">Ceremony: all vendors on standby</span>
+            </div>
+            <div class="mini-block" style="--accent:#C4A262;">
+              <span class="mini-time">3:30 PM</span>
+              <span class="mini-title">Catering: dinner service prep</span>
+            </div>
+            <div class="mini-block" style="--accent:#9482BE;">
+              <span class="mini-time">5:00 PM</span>
+              <span class="mini-title">DJ: reception set begins</span>
+            </div>
+          </div>
+          <div class="mini-footer">Vendor Call Sheet</div>
+        </div>
+
+      </div>
+      <!-- END MOCKUP STRIP -->
+
+      <div class="price-callout">
+        <span class="price-launch">$99</span>
+        <span class="price-original">$249</span>
+        <span class="price-badge">Launch price</span>
+      </div>
+
+      <a href="https://buy.stripe.com/9B63cw5Fod1S98s7vO0Fi01" class="btn-book">Book the Game Plan</a>
+      <p class="book-note">Takes 5 minutes. Spots are limited.</p>
+    </div>
+  </section>
+
+  <!-- ================================================ -->
+  <!-- SECTION 3: WEDDING PROS / SKOOL                  -->
+  <!-- ================================================ -->
+  <div id="planners" class="funnel-banner funnel-banner-planners">
+    <span class="funnel-banner-dot"></span>
+    For Wedding Pros
+  </div>
+
+  <section class="scroll-target section-dark">
+    <div class="section">
+      <div class="section-label">For Wedding Pros</div>
+      <div class="section-divider"></div>
+      <h2>Book better couples, further out, with less effort.</h2>
+      <p>Most planner communities are either overpriced courses or Facebook groups full of drama and "what should I charge for a micro-wedding" posts. <strong>This is a community interested in sharing expertise and making each other better.</strong></p>
+      <p>Vendor strategy, pricing frameworks, client communication scripts. The stuff that took years to figure out, shared openly.</p>
+      <ul class="bullets">
+        <li><span class="bullet-arrow">â</span><span>Pricing frameworks that stop the race to the bottom, with numbers you can actually defend</span></li>
+        <li><span class="bullet-arrow">â</span><span>Vendor relationships strategy for markets where everyone knows everyone</span></li>
+        <li><span class="bullet-arrow">â</span><span>Client communication scripts for the conversations nobody teaches you</span></li>
+        <li><span class="bullet-arrow">â</span><span>Direct access to other operators doing real volume, not hobbyists and not coaches</span></li>
+      </ul>
+      <div class="tiers">
+        <div class="tier tier-active">
+          <div>
+            <div class="tier-label">Founding Member</div>
+            <div class="tier-detail">First 50 people. Free, forever.</div>
+          </div>
+          <div class="tier-price">Free<span>always</span></div>
+        </div>
+        <div class="tier tier-active">
+          <div>
+            <div class="tier-label">Founding Partner</div>
+            <div class="tier-detail">Next 50. Locked in permanently.</div>
+          </div>
+          <div class="tier-price">$49/mo<span>locked rate</span></div>
+        </div>
+        <div class="tier">
+          <div>
+            <div class="tier-label">Standard</div>
+            <div class="tier-detail">After Founding Partners fill</div>
+          </div>
+          <div class="tier-price">$99/mo<span>standard</span></div>
+        </div>
+      </div>
+      <a href="https://skool.com/do-better-weddings-3436" class="btn-apply">Join the DBW Community on Skool</a>
+      <p class="apply-note">Application reviewed personally. Founding Member spots are limited.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><a href="https://instagram.com/dobetterweddings">@doBetterWeddings</a></p>
+    <p>Built for grooms. Useful for everyone.</p>
+    <p style="margin-top:16px;font-size:11px;color:#2a2a2a;">&copy; <script>document.write(new Date().getFullYear())</script> Do Better Weddings &nbsp;&middot;&nbsp; <a href="mailto:hello@dobetterweddings.co">hello@dobetterweddings.co</a></p>
+  </footer>
+
 </body>
 </html>
