@@ -45,21 +45,17 @@
   /* ISSUES GRID */
   .issues-wrap { max-width: 800px; margin: 0 auto; padding: 48px 24px 80px; }
   .issues-label { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
-  .issue-card { border: 1px solid var(--gray2); border-radius: 12px; overflow: hidden; margin-bottom: 24px; display: grid; grid-template-columns: 200px 1fr; transition: border-color 0.2s; }
-  .issue-card:hover { border-color: var(--gold-dim); }
+  .issue-card { border: 1px solid var(--gray2); border-radius: 12px; overflow: hidden; margin-bottom: 24px; display: grid; grid-template-columns: 200px 1fr; transition: border-color 0.2s, background 0.2s, transform 0.2s; cursor: pointer; text-decoration: none; color: inherit; }
+  .issue-card:hover { border-color: var(--gold); background: var(--gray); transform: translateY(-2px); }
+  .issue-card:hover .issue-title { color: var(--gold); }
   .issue-img { background: var(--gray); overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 140px; }
   .issue-img img { width: 100%; height: 100%; object-fit: cover; }
-  .issue-body { padding: 20px 24px; display: flex; flex-direction: column; justify-content: space-between; }
+  .issue-body { padding: 20px 24px; display: flex; flex-direction: column; justify-content: center; }
   .issue-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
   .issue-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.1em; background: rgba(201,168,76,0.1); padding: 2px 8px; border-radius: 3px; }
   .issue-date { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
-  .issue-title { font-size: 17px; font-weight: 600; color: var(--white); margin-bottom: 6px; line-height: 1.3; }
-  .issue-caption { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 16px; font-style: italic; }
-  .issue-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-  .btn-read { background: var(--white); color: var(--black); font-size: 12px; font-weight: 600; padding: 7px 16px; border-radius: 5px; text-decoration: none; font-family: 'DM Mono', monospace; letter-spacing: 0.05em; transition: background 0.15s; }
-  .btn-read:hover { background: var(--gold); }
-  .btn-book { background: transparent; color: var(--gold); font-size: 12px; font-weight: 500; padding: 7px 16px; border-radius: 5px; text-decoration: none; font-family: 'DM Mono', monospace; letter-spacing: 0.05em; border: 1px solid var(--gold-dim); transition: all 0.15s; }
-  .btn-book:hover { background: var(--gold); color: var(--black); }
+  .issue-title { font-size: 17px; font-weight: 600; color: var(--white); margin-bottom: 6px; line-height: 1.3; transition: color 0.2s; }
+  .issue-caption { font-size: 13px; color: var(--muted); line-height: 1.5; font-style: italic; }
 
   @media (max-width: 560px) {
     .issue-card { grid-template-columns: 1fr; }
@@ -95,25 +91,19 @@
   <div class="issues-label">All Issues</div>
 
   <!-- ISSUE 001 -->
-  <div class="issue-card">
+  <a class="issue-card" href="./issues/001.html">
     <div class="issue-img">
       <img src="./memes/issue-001.gif" alt="Issue 001 meme">
     </div>
     <div class="issue-body">
-      <div>
-        <div class="issue-meta">
-          <span class="issue-num">ISSUE 001</span>
-          <span class="issue-date">May 2026</span>
-        </div>
-        <div class="issue-title">How to Run a Great Locker Room</div>
-        <div class="issue-caption">"Me, walking into the Locker Room to fire up the Groom's side."</div>
+      <div class="issue-meta">
+        <span class="issue-num">ISSUE 001</span>
+        <span class="issue-date">May 2026</span>
       </div>
-      <div class="issue-actions">
-        <a href="./issues/001.html" class="btn-read">Read the Drill</a>
-        <a href="https://calendly.com/joe-dobetterweddings/30min" class="btn-book">Book a Session</a>
-      </div>
+      <div class="issue-title">How to Run a Great Locker Room</div>
+      <div class="issue-caption">"Me, walking into the Locker Room to fire up the Groom's side."</div>
     </div>
-  </div>
+  </a>
 
   <!-- FUTURE ISSUES PLACEHOLDER -->
   <div style="text-align:center;padding:40px 0;border:1px dashed var(--gray2);border-radius:12px;">
