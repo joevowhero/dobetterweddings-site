@@ -60,6 +60,18 @@
       text-transform: uppercase;
       text-decoration: none;
     }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .nav-link {
+      color: var(--gray);
+      font-size: 12px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .nav-link:hover { color: var(--white); }
     .nav-ig {
       color: var(--gray);
       font-size: 12px;
@@ -623,7 +635,10 @@
   <!-- NAV -->
   <nav class="nav">
     <a href="#" class="nav-brand">Do Better Weddings</a>
-    <a href="https://instagram.com/dobetterweddings" class="nav-ig">@dobetterweddings</a>
+    <div class="nav-right">
+      <a href="/press-clippings" class="nav-link">Press Clippings</a>
+      <a href="https://instagram.com/dobetterweddings" class="nav-ig">@dobetterweddings</a>
+    </div>
   </nav>
 
   <!-- HERO -->
