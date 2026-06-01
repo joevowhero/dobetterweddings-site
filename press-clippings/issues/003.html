@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Issue 003: How to Actually Help During Wedding Planning — Two-Minute Drill</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2ec;
+    --gold: #c9a84c;
+    --gold-dim: #8a6e2f;
+    --gray: #1a1a1a;
+    --gray2: #2a2a2a;
+    --muted: #666;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+
+  nav { border-bottom: 1px solid var(--gray2); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: var(--gold); text-decoration: none; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { font-size: 12px; font-family: 'DM Mono', monospace; letter-spacing: 0.08em; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta { background: var(--gold); color: var(--black) !important; padding: 6px 14px; border-radius: 4px; font-weight: 500 !important; }
+
+  .issue-wrap { max-width: 620px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  .back-link { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 32px; transition: color 0.2s; }
+  .back-link:hover { color: var(--gold); }
+
+  .issue-header { margin-bottom: 32px; }
+  .issue-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+  .issue-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.1em; background: rgba(201,168,76,0.1); padding: 3px 10px; border-radius: 3px; }
+  .issue-date { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
+  .issue-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 6vw, 52px); letter-spacing: 1px; line-height: 1; color: var(--white); margin-bottom: 8px; }
+  .issue-subtitle { font-size: 14px; font-family: 'DM Mono', monospace; color: var(--gold); letter-spacing: 0.06em; }
+
+  .divider { height: 1px; background: var(--gray2); margin: 28px 0; }
+
+  .reply-box { background: var(--gray); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 16px 20px; margin-bottom: 28px; }
+  .reply-box p { font-size: 14px; color: #c8c4bc; line-height: 1.6; }
+  .reply-box strong { color: var(--white); }
+
+  .body-text { font-size: 16px; line-height: 1.75; color: #c8c4bc; margin-bottom: 20px; }
+  .body-text strong { color: var(--white); font-weight: 600; }
+
+  .play-list { margin: 24px 0; display: flex; flex-direction: column; gap: 16px; }
+  .play-item { background: var(--gray); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 14px 18px; }
+  .play-title { font-size: 13px; font-weight: 600; color: var(--white); letter-spacing: 0.04em; text-transform: uppercase; font-family: 'DM Mono', monospace; margin-bottom: 4px; }
+  .play-body { font-size: 14px; color: #999; line-height: 1.5; }
+
+  .signoff { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--gray2); }
+  .signoff-text { font-size: 15px; color: #c8c4bc; line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+  .signoff-name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 2px; color: var(--gold); }
+
+  .ps-section { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
+  .ps-item { background: var(--gray); border-radius: 8px; padding: 16px 20px; }
+  .ps-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 6px; }
+  .ps-text { font-size: 14px; color: #999; line-height: 1.5; }
+  .ps-text a { color: var(--gold); text-decoration: none; font-weight: 500; }
+  .ps-text a:hover { text-decoration: underline; }
+
+  .meme-wrap { margin: 16px 0 0; background: var(--gray2); border-radius: 10px; overflow: hidden; text-align: center; padding: 24px; }
+  .meme-wrap img { max-width: 100%; border-radius: 6px; max-height: 200px; }
+  .meme-caption { font-size: 13px; color: var(--muted); margin-top: 12px; font-style: italic; }
+
+  .cta-bar { background: linear-gradient(135deg, #8a6e2f, #c9a84c); border-radius: 10px; padding: 24px; text-align: center; margin-top: 40px; }
+  .cta-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; color: var(--black); margin-bottom: 6px; }
+  .cta-sub { font-size: 13px; color: rgba(0,0,0,0.6); margin-bottom: 16px; }
+  .cta-btn { display: inline-block; background: var(--black); color: var(--gold); font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-family: 'DM Mono', monospace; letter-spacing: 0.06em; }
+
+  @media (max-width: 480px) {
+    nav { padding: 12px 16px; }
+    .nav-links { gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://dobetterweddings.co">DBW</a>
+  <div class="nav-links">
+    <a href="../index.html">Press Clippings</a>
+    <a href="https://dobetterweddings.co">Home</a>
+    <a href="https://calendly.com/joe-dobetterweddings/30min" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<div class="issue-wrap">
+
+  <a href="../index.html" class="back-link">← All Issues</a>
+
+  <div class="issue-header">
+    <div class="issue-meta">
+      <span class="issue-num">ISSUE 003</span>
+      <span class="issue-date">June 2026</span>
+    </div>
+    <h1 class="issue-title">How to Actually Help During Wedding Planning</h1>
+    <div class="issue-subtitle">Two-Minute Drill by Joe Karsonovich</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="reply-box">
+    <p><strong>Before we get into it</strong> -- reply to this email and tell me one thing you're supposed to be handling for the wedding right now. It doesn't matter how big or small. I read every reply and I'll send something useful back.</p>
+  </div>
+
+  <p class="body-text">She's been carrying most of this. You know it. She probably hasn't said it out loud but you both know it.</p>
+
+  <p class="body-text">Here's the thing -- you don't have to take over the whole wedding. You just have to own your lanes completely so she never has to think about them.</p>
+
+  <p class="body-text">Here are three you can take off her plate starting today.</p>
+
+  <div class="play-list">
+    <div class="play-item">
+      <div class="play-title">Own the rehearsal dinner</div>
+      <div class="play-body">This one is traditionally the groom's family's responsibility anyway. Venue, food, guest list, logistics. If you haven't started on this yet, start today. She should not have to think about this once. Pick a spot, confirm headcount, handle it. Done.</div>
+    </div>
+    <div class="play-item">
+      <div class="play-title">Be the groomsmen's point of contact</div>
+      <div class="play-body">Every text, every question, every "what time do I need to be there" -- that comes to you, not her. Set up a group chat if you haven't already. Send them the details before they ask. The goal is zero groomsmen questions reaching your fiancée between now and the wedding day.</div>
+    </div>
+    <div class="play-item">
+      <div class="play-title">Pick one vendor and own it completely</div>
+      <div class="play-body">Doesn't matter which one. The DJ, the officiant, the transportation. Find three options, do the research, present her with a recommendation. Not "what do you think about these" -- a recommendation. "I think we should go with this one, here's why." She'll either agree or redirect you, but either way you showed up.</div>
+    </div>
+  </div>
+
+  <p class="body-text">None of this is complicated. It's just showing up before she has to ask.</p>
+
+  <div class="signoff">
+    <p class="signoff-text">From the sideline,</p>
+    <div class="signoff-name">Coach Karso</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="ps-section">
+    <div class="ps-item">
+      <div class="ps-label">PS</div>
+      <div class="ps-text">If you're stuck trying to find a specific vendor or don't know where to start on something, reply to this email and tell me what you're looking for. I know people across the wedding industry and I'll point you in the right direction. No pitch, no catch. Just reply.</div>
+    </div>
+    <div class="ps-item" id="pps">
+      <div class="ps-label">PPS</div>
+      <div class="ps-text">How most grooms feel after getting chewed out by their overstimulated bride...
+        <div class="meme-wrap">
+          <img src="../memes/issue-003.gif" alt="Help me help you">
+          <div class="meme-caption">Help me help you.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-bar">
+    <div class="cta-title">Reply to this email.</div>
+    <div class="cta-sub">Tell me one thing you're supposed to be handling right now. I'll send something useful back.</div>
+    <a href="mailto:joe@dobetterweddings.co" class="cta-btn">Reply to Coach Karso</a>
+  </div>
+
+</div>
+
+</body>
+</html>
