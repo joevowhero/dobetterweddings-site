@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Issue 004: The One Thing That Fixes 80% of Wedding Day Chaos — Two-Minute Drill</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2ec;
+    --gold: #c9a84c;
+    --gold-dim: #8a6e2f;
+    --gray: #1a1a1a;
+    --gray2: #2a2a2a;
+    --muted: #666;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; min-height: 100vh; }
+
+  nav { border-bottom: 1px solid var(--gray2); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: var(--gold); text-decoration: none; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { font-size: 12px; font-family: 'DM Mono', monospace; letter-spacing: 0.08em; color: var(--muted); text-decoration: none; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta { background: var(--gold); color: var(--black) !important; padding: 6px 14px; border-radius: 4px; font-weight: 500 !important; }
+
+  .issue-wrap { max-width: 620px; margin: 0 auto; padding: 48px 24px 80px; }
+
+  .back-link { font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; display: inline-flex; align-items: center; gap: 6px; margin-bottom: 32px; transition: color 0.2s; }
+  .back-link:hover { color: var(--gold); }
+
+  .issue-header { margin-bottom: 32px; }
+  .issue-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+  .issue-num { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--gold); letter-spacing: 0.1em; background: rgba(201,168,76,0.1); padding: 3px 10px; border-radius: 3px; }
+  .issue-date { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); }
+  .issue-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 6vw, 48px); letter-spacing: 1px; line-height: 1; color: var(--white); margin-bottom: 8px; }
+  .issue-subtitle { font-size: 14px; font-family: 'DM Mono', monospace; color: var(--gold); letter-spacing: 0.06em; }
+
+  .divider { height: 1px; background: var(--gray2); margin: 28px 0; }
+
+  .body-text { font-size: 16px; line-height: 1.75; color: #c8c4bc; margin-bottom: 20px; }
+  .body-text strong { color: var(--white); font-weight: 600; }
+
+  .offer-box { background: var(--gray); border-left: 3px solid var(--gold); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 28px 0; }
+  .offer-price { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+  .offer-was { font-size: 12px; font-family: 'DM Mono', monospace; color: var(--muted); text-decoration: line-through; margin-bottom: 8px; }
+  .offer-desc { font-size: 14px; color: #c8c4bc; line-height: 1.6; margin-bottom: 16px; }
+  .offer-btn { display: inline-block; background: var(--gold); color: var(--black); font-size: 13px; font-weight: 700; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-family: 'DM Mono', monospace; letter-spacing: 0.06em; transition: background 0.15s; }
+  .offer-btn:hover { background: #d4a84c; }
+
+  .signoff { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--gray2); }
+  .signoff-text { font-size: 15px; color: #c8c4bc; line-height: 1.7; margin-bottom: 16px; font-style: italic; }
+  .signoff-name { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 2px; color: var(--gold); }
+
+  .ps-section { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
+  .ps-item { background: var(--gray); border-radius: 8px; padding: 16px 20px; }
+  .ps-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 6px; }
+  .ps-text { font-size: 14px; color: #999; line-height: 1.5; }
+  .ps-text a { color: var(--gold); text-decoration: none; font-weight: 500; }
+  .ps-text a:hover { text-decoration: underline; }
+
+  .meme-wrap { margin: 16px 0 0; background: var(--gray2); border-radius: 10px; overflow: hidden; text-align: center; padding: 24px; }
+  .meme-wrap img { max-width: 100%; border-radius: 6px; max-height: 200px; }
+  .meme-caption { font-size: 13px; color: var(--muted); margin-top: 12px; font-style: italic; }
+
+  .cta-bar { background: linear-gradient(135deg, #8a6e2f, #c9a84c); border-radius: 10px; padding: 24px; text-align: center; margin-top: 40px; }
+  .cta-title { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 2px; color: var(--black); margin-bottom: 6px; }
+  .cta-sub { font-size: 13px; color: rgba(0,0,0,0.6); margin-bottom: 16px; }
+  .cta-btn { display: inline-block; background: var(--black); color: var(--gold); font-size: 13px; font-weight: 600; padding: 10px 24px; border-radius: 6px; text-decoration: none; font-family: 'DM Mono', monospace; letter-spacing: 0.06em; }
+
+  @media (max-width: 480px) {
+    nav { padding: 12px 16px; }
+    .nav-links { gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="https://dobetterweddings.co">DBW</a>
+  <div class="nav-links">
+    <a href="../index.html">Press Clippings</a>
+    <a href="https://dobetterweddings.co">Home</a>
+    <a href="https://calendly.com/joe-dobetterweddings/30min" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<div class="issue-wrap">
+
+  <a href="../index.html" class="back-link">← All Issues</a>
+
+  <div class="issue-header">
+    <div class="issue-meta">
+      <span class="issue-num">ISSUE 004</span>
+      <span class="issue-date">June 2026</span>
+    </div>
+    <h1 class="issue-title">The One Thing That Fixes 80% of Wedding Day Chaos</h1>
+    <div class="issue-subtitle">Two-Minute Drill by Joe Karsonovich</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="body-text">Quick one this week because the concept is simple but most grooms completely miss it.</p>
+
+  <p class="body-text">The number one thing that takes stress off your bride between now and the wedding day is you understanding the timeline better than she does.</p>
+
+  <p class="body-text">Your friends and family will have questions -- despite there being a whole wedding website -- and you need to be able to answer them without directing people to your bride.</p>
+
+  <p class="body-text">When does the photographer arrive? When do the boys need to be dressed? When does the ceremony actually start? What happens right after?</p>
+
+  <p class="body-text">You can see how quickly things can get out of hand.</p>
+
+  <p class="body-text">But when you know the timeline cold, three things happen.</p>
+
+  <p class="body-text">She stops having to answer your questions. Your groomsmen stop asking her questions because they go to you instead. And on the day itself you can actually be present instead of scrambling to figure out what comes next.</p>
+
+  <p class="body-text"><strong>Most grooms treat the timeline like fine print, but the great ones treat it like a game plan.</strong></p>
+
+  <p class="body-text">Here's how to get there fast.</p>
+
+  <div class="offer-box">
+    <div class="offer-price">$14</div>
+    <div class="offer-was">Usually $99</div>
+    <div class="offer-desc">I'll build you a clean shareable live timeline your vendors, bridal party, and families can all pull up on their phones. You send me your wedding details over email, we go back and forth a few times until it's right, and you walk away with one link that answers every "what time do I need to be there" question before anyone asks it. Summer special for couples in the final stretch.</div>
+    <a href="https://buy.stripe.com/bJe9AUd7QaTK1G03fy0Fi05" class="offer-btn">Get Your Timeline for $14</a>
+  </div>
+
+  <p class="body-text">Regardless of whether you use me or not, having a quick access timeline that you build yourself might be the best gift you could give to yourself and your bride. I want you to win.</p>
+
+  <div class="signoff">
+    <p class="signoff-text">From the sideline,</p>
+    <div class="signoff-name">Coach Karso</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="ps-section">
+    <div class="ps-item">
+      <div class="ps-label">PS</div>
+      <div class="ps-text">The guys who show up on wedding day calm and locked in almost always knew the plan before anyone asked. Be that guy.</div>
+    </div>
+    <div class="ps-item" id="pps">
+      <div class="ps-label">PPS</div>
+      <div class="ps-text">How stressed out brides look explaining their timeline for the 69th time...
+        <div class="meme-wrap">
+          <img src="../memes/issue-004.gif" alt="Charlie Day conspiracy board">
+          <div class="meme-caption">Every bride explaining the timeline to someone who should already know it.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-bar">
+    <div class="cta-title">Get your timeline sorted.</div>
+    <div class="cta-sub">$14 summer special. Clean shareable link. 48 hour turnaround.</div>
+    <a href="https://buy.stripe.com/bJe9AUd7QaTK1G03fy0Fi05" class="cta-btn">Get Your Timeline for $14</a>
+  </div>
+
+</div>
+
+</body>
+</html>
